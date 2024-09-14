@@ -9,23 +9,28 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func new_game():
 	score = 0
+	$HUD.update_score(score)
+	$HUD.show_message("Get Ready")
 
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 
 func game_over() -> void:
+	$HUD.show_game_over()
+
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 
 
 func _on_score_timer_timeout() -> void:
 	score += 1
+	$HUD.update_score(score)
 
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()

@@ -22,8 +22,8 @@ func show_game_over():
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
 
-	$Message.text = "Dodge the Creeps!"
-	$Message.show()
+	$MessageLabel.text = "Dodge the Creeps!"
+	$MessageLabel.show()
 
 	# 一時的なタイマーを開始して終了まで待つ
 	await get_tree().create_timer(1.0).timeout
